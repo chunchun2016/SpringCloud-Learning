@@ -2,6 +2,7 @@ package com.example.web;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +20,11 @@ public class ComputeController {
     @Autowired
     private DiscoveryClient client;
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String hello(@RequestParam String name) {
         ServiceInstance instance = client.getLocalServiceInstance();
-        Integer r = a + b;
-        logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
-        return r;
+        String result = "hello " + name + ", host: " + instance.getHost() + ", port: " + instance.getPort() + ", service_id: " + instance.getServiceId();
+        logger.info(result);
+        return result;
     }
 }
