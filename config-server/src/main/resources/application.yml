@@ -10,6 +10,6 @@ spring:
       server:
         git:
           uri: https://github.com/chunchun2016/SpringCloud-Learning.git
-          searchPaths: Chapter9-1-4/config-repo
-          username: 357318154@qq.com
+          searchPaths: config-repo
+          username: chunchun2016
           password: hcl2000
